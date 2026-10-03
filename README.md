@@ -5,22 +5,23 @@ Flight firmware for the UCSC Rocketry STM32N6 gimballed camera payload (IREC 202
 ## First-time setup
 
 ```sh
-# 1. Create the workspace, with this repo as the manifest
+# 1. Create a Python virtual environment where the workspace will go.
+python3 -m venv payload-ws/.venv
+source payload-ws/.venv/bin/activate
+pip install west
+
+# 2. Create the workspace, with this repo as the manifest
 west init -m https://github.com/UCSCRocketry/payload27-firmware --mr main payload-ws
 cd payload-ws
 
-# 2. Fetch Zephyr and modules
+# 3. Fetch Zephyr and modules
 west update
 
-# 3. Register zephyr install
+# 4. Register zephyr install
 west zephyr-export
 
-# 4. Install python dependencies
+# 5. Install python dependencies
 pip install -r zephyr/scripts/requirements.txt
-
-# 5. Each example sets its board in its own CMakeLists.txt, so silence west's
-#    warning about building without --board
-west config build.board_warn false
 ```
 
 ## Building an example
