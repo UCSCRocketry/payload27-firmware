@@ -1,0 +1,36 @@
+# Zephyr / west build output
+build*/
+twister-out*/
+.venv/
+.cache*/
+
+# west workspace projects, in case someone initialises the workspace inside
+# this repo instead of its parent.
+/.west/
+/zephyr/
+/modules/
+/bootloader/
+/doc/reqmgmt/
+/tools/edtt/
+/tools/net-tools/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Toolchain droppings
+*.o
+*.elf
+*.map
+compile_commands.json
+
+# Signed images
+*.bin
+*.hex
+*_signed.*

@@ -1,0 +1,73 @@
+#******************************************************************************
+#
+# SPDX-FileCopyrightText: Copyright (c) 2026, UCSC Rocket Team
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+#******************************************************************************
+
+mainmenu "Video still capture sample application"
+
+menu "Still capture configuration"
+
+config STILL_CAPTURE_WIDTH
+	int "Width of the picture"
+	default 640
+	help
+	  Width the camera pipeline is asked to produce. Must be a multiple of 16.
+
+config STILL_CAPTURE_HEIGHT
+	int "Height of the picture"
+	default 480
+	help
+	  Height the camera pipeline is asked to produce. Must be a multiple of 16.
+
+config STILL_CAPTURE_NUM_BUFS
+	int "Number of capture buffers"
+	default 2
+	range 1 8
+	help
+	  Number of capture buffers handed to the camera. Recommended minimum is 2.
+	  Each takes a slot in CONFIG_VIDEO_BUFFER_POOL_NUM_MAX, which must leave
+	  one more slot for the JPEG.
+
+config STILL_CAPTURE_CAMERA_POWER_UP_MS
+	int "Wait for the camera module to power up, in ms"
+	default 100
+	range 0 1000
+	help
+	  The shield switches the camera module's power on at boot, and the sensor
+	  driver starts talking to it over I2C soon after without waiting for the
+	  module to come up. Boot waits this long in between.
+
+config STILL_CAPTURE_WARMUP_FRAMES
+	int "Frames to throw away before keeping one"
+	default 8
+	range 0 255
+	help
+	  The first frames after the sensor starts are unusable and must be discarded.
+
+config STILL_CAPTURE_EXPOSURE
+	int "Sensor exposure, in lines"
+	default -1
+	help
+	  Value for VIDEO_CID_EXPOSURE. Set as -1 to keep the sensor driver default,
+	  which is typically the maximum value.
+
+config STILL_CAPTURE_GAIN
+	int "Sensor analogue gain, in mdB"
+	default -1
+	help
+	  Value for VIDEO_CID_ANALOGUE_GAIN. Set as -1 to keep the sensor driver
+	  default.
+
+config STILL_CAPTURE_JPEG_QUALITY
+	int "JPEG quality"
+	default 50
+	range 5 100
+	help
+	  Output JPEG quality for the encoder.
+
+endmenu
+
+source "Kconfig.zephyr"

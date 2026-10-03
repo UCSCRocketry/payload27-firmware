@@ -1,0 +1,47 @@
+# payload-firmware
+
+Flight firmware for the UCSC Rocketry STM32N6 gimballed camera payload (IREC 2027).
+
+## First-time setup
+
+```sh
+# 1. Create the workspace, with this repo as the manifest
+west init -m https://github.com/UCSCRocketry/payload27-firmware --mr main payload-ws
+cd payload-ws
+
+# 2. Fetch Zephyr and modules
+west update
+
+# 3. Register zephyr install
+west zephyr-export
+
+# 4. Install python dependencies
+pip install -r zephyr/scripts/requirements.txt
+
+# 5. Each example sets its board in its own CMakeLists.txt, so silence west's
+#    warning about building without --board
+west config build.board_warn false
+```
+
+## Building an example
+
+Each example builds and runs from its own directory; see its README for details.
+
+```sh
+cd payload-firmware/examples/still_capture
+west build -p always
+```
+
+## Loading onto the Nucleo
+
+`scripts/jlink.py` loads a built image into the Nucleo over a J-Link on its
+MIPI20 connector (CN1) and starts it. From an example's directory:
+
+```sh
+python3 ../../scripts/jlink.py load
+```
+
+It loads `build/zephyr/zephyr.elf` unless given another ELF.
+`jlink.py read ADDRESS LENGTH OUTPUT` saves target memory to a file. The J-Link
+device name, interface and speed are in `scripts/jlink.ini`; pass `--config` to
+use another file.

@@ -1,0 +1,48 @@
+#******************************************************************************
+# 
+# SPDX-FileCopyrightText: Copyright (c) 2026, UCSC Rocket Team
+#
+# SPDX-License-Identifier: BSD-3-Clause
+#
+#******************************************************************************
+
+#******************************************************************************
+#
+# west.yml - West core manifest file 
+#
+#******************************************************************************
+
+manifest:
+  version: "0.13"
+
+  remotes:
+    - name: upstream
+      url-base: https://github.com/zephyrproject-rtos
+
+  group-filter:
+    - -babblesim
+    - -optional
+    - -testing
+
+  projects:
+    - name: zephyr
+      remote: upstream
+      repo-path: zephyr
+
+      #! DO NOT MODIFY - This repository is locked down to a specific
+      #! commit hash. Periodic bumps require a separate PR.
+      revision: 1ee3b93134be23c16ab16b9eb4183bfef63447a6
+
+      import:
+        name-allowlist:
+          - cmsis          # ARM CMSIS core
+          - cmsis_6        # CMSIS 6 core headers
+          - cmsis-dsp      # Helium/MVE kernels.
+          - hal_stm32      # STM32 HAL
+          - segger         # J-Link (RTT and SystemView)
+          - fatfs
+          - littlefs
+          - picolibc       # Zephyr's default C library.
+
+  self:
+    path: payload-firmware
