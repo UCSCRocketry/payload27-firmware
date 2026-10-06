@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 set(BOARD nucleo_n657x0_q)
+# set(BOARD nucleo_f411re)
+# set(BOARD nucleo_f446re)
+# set(BOARD nucleo_l073rz)
 
 cmake_minimum_required(VERSION 3.28.0)
 

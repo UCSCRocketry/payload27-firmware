@@ -13,7 +13,7 @@ $ west build -p always
 $ python3 ../../scripts/jlink.py load
 ```
 
-The RTT control and buffer blocks are placed in AXISRAM1, thus J-Link's RTT auto-detection may be used in the RTT viewer/client.
+N657 Note: The RTT control and buffer blocks are placed in AXISRAM1, thus J-Link's RTT auto-detection may be used in the RTT viewer/client.
 
 ## Expected output
 
