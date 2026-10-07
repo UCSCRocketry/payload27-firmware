@@ -1,6 +1,7 @@
 # hello_world
 
-Print "Hello World" to the RTT console. Adapted from zephyr's included sample hello_world.
+Print "Hello World" to the RTT console, followed by device, CPU, reset, debug and software
+information. Adapted from zephyr's included sample hello_world.
 
 ## Building and running
 
@@ -23,4 +24,21 @@ Using the CLI RTT client:
 $ JLinkRTTClient
 *** Booting Zephyr OS build v4.4.0-17350-g1ee3b93134be ***
 Hello World! nucleo_n657x0_q/stm32n657xx
+
+Device Info:
+	SoC:            stm32n657xx (stm32n6x series)
+	Device ID:      ...
+	...
+
+CPU Info:
+	...
+
+Reset Info:
+	...
+
+Debug Info:
+	...
+
+Software Info:
+	...
 ```
