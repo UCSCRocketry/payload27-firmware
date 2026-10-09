@@ -45,4 +45,4 @@ manifest:
           - picolibc       # Zephyr's default C library.
 
   self:
-    path: payload-firmware
+    path: polyphemus-firmware

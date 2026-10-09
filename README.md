@@ -1,6 +1,6 @@
-# payload-firmware
+# polyphemus-firmware
 
-Flight firmware for the UCSC Rocketry STM32N6 gimballed camera payload (IREC 2027).
+Flight firmware for the UCSC Rocketry gimballed camera payload, "Polyphemus".
 
 ## First-time setup
 
@@ -11,7 +11,7 @@ source payload-ws/.venv/bin/activate
 pip install west
 
 # 2. Create the workspace, with this repo as the manifest
-west init -m https://github.com/UCSCRocketry/payload27-firmware --mr main payload-ws
+west init -m https://github.com/UCSCRocketry/polyphemus-firmware --mr main payload-ws
 cd payload-ws
 
 # 3. Fetch Zephyr and modules
